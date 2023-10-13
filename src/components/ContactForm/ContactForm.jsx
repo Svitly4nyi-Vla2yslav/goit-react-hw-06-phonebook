@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { nanoid } from 'nanoid';
 import { useState } from "react";
 import './ContactForm.css'
+// import { useDispatch, useSelector } from 'react-redux';
 
 export function ContactForm({ onSubmit, contacts }) {
   const [number, setNumber] = useState('')
@@ -24,6 +25,10 @@ export function ContactForm({ onSubmit, contacts }) {
 
     }
   }
+
+  // const dispatch = useDispatch();
+  // const contacts = useSelector();
+
   const handleInputSubmit = event => {
     event.preventDefault();
 
