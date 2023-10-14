@@ -1,8 +1,6 @@
 import { configureStore} from '@reduxjs/toolkit';
 import persistStore from 'redux-persist/es/persistStore';
 import { persistReducerContacts } from './reducer';
-import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
-// import { curryGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
 
 export const store = configureStore({
   reducer: {
@@ -10,9 +8,7 @@ export const store = configureStore({
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
+      serializableCheck: false, // вимкнення перевірки на серіалізованість
     }),
 });
 export const persistor = persistStore(store);
