@@ -1,7 +1,15 @@
 import React from 'react'
 import './Filter.css'
-import PropTypes from 'prop-types'
-export const Filter = ({ value, onChange }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { filterContact, getFilter } from 'redux/sliceContact';
+export const Filter = () => {
+    const dispatch = useDispatch();
+
+    const value = useSelector(getFilter);
+
+    const onChange = e => {
+        dispatch(filterContact(e.currentTarget.value.trim()));
+    };
 
     return (
         <div>
@@ -17,7 +25,3 @@ export const Filter = ({ value, onChange }) => {
     )
 }
 
-Filter.propTypes = {
-    value: PropTypes.string.isRequired,
-    onChange: PropTypes.func.isRequired
-}
